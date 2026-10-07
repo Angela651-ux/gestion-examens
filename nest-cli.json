@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/gestionexamen/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "builder": "rspack",
+    "tsConfigPath": "apps/gestionexamen/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/gestionexamen",
+  "projects": {
+    "api-gateway": {
+      "type": "application",
+      "root": "apps/api-gateway",
+      "entryFile": "main",
+      "sourceRoot": "apps/api-gateway/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/api-gateway/tsconfig.app.json"
+      }
+    },
+    "gestionexamen": {
+      "type": "application",
+      "root": "apps/gestionexamen",
+      "entryFile": "main",
+      "sourceRoot": "apps/gestionexamen/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/gestionexamen/tsconfig.app.json"
+      }
+    },
+    "service-authentifcation": {
+      "type": "application",
+      "root": "apps/service-authentifcation",
+      "entryFile": "main",
+      "sourceRoot": "apps/service-authentifcation/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/service-authentifcation/tsconfig.app.json"
+      }
+    },
+    "service-examens": {
+      "type": "application",
+      "root": "apps/service-examens",
+      "entryFile": "main",
+      "sourceRoot": "apps/service-examens/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/service-examens/tsconfig.app.json"
+      }
+    },
+    "service-organistaion": {
+      "type": "application",
+      "root": "apps/service-organistaion",
+      "entryFile": "main",
+      "sourceRoot": "apps/service-organistaion/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/service-organistaion/tsconfig.app.json"
+      }
+    },
+    "service-resultat": {
+      "type": "application",
+      "root": "apps/service-resultat",
+      "entryFile": "main",
+      "sourceRoot": "apps/service-resultat/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/service-resultat/tsconfig.app.json"
+      }
+    }
+  }
+}

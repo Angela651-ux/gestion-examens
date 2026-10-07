@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "resolvePackageJsonExports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2023",
+    "types": [
+      "node",
+      "jest"
+    ],
+    "sourceMap": true,
+    "outDir": "./dist",
+    "rootDir": ".",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictPropertyInitialization": false
+  },
+  "files": [],
+  "references": [
+    {
+      "path": "./apps/gestionexamen/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/service-authentifcation/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/service-examens/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/service-organistaion/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/service-resultat/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/api-gateway/tsconfig.app.json"
+    }
+  ]
+}
