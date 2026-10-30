@@ -463,10 +463,10 @@ const inscription = async () => {
         role.value = ''
 
 
-    } catch (error) {
+    } catch (erreur) {
 
 
-        console.error(error)
+        console.error(erreur)
 
 
         if (error.response) {

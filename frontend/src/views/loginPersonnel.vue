@@ -135,10 +135,10 @@ const erreurPassword = ref('')
         const roleUtilisateur = response.data.utilisateur.role
 
          if(roleUtilisateur ==='secretaire'){
-            router.push('/secretaire')
+            router.push('/dashboard')
          }
          else if(roleUtilisateur === 'chefMention'){
-            router.push('/chefMention')
+            router.push('/dashboard')
          }
         alert('Connexion réussie!')
 

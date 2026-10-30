@@ -42,6 +42,21 @@
     },
     {
       "path": "./apps/api-gateway/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/service-ue/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/service-pedagogique/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/service-personel/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/svrpedag-parcours/gestionexamen/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/svrpedag-parcours/controller/tsconfig.app.json"
     }
   ]
 }

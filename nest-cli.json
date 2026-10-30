@@ -19,6 +19,15 @@
         "tsConfigPath": "apps/api-gateway/tsconfig.app.json"
       }
     },
+    "controller": {
+      "type": "application",
+      "root": "apps/svrpedag-parcours/controller",
+      "entryFile": "main",
+      "sourceRoot": "apps/svrpedag-parcours/controller/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/svrpedag-parcours/controller/tsconfig.app.json"
+      }
+    },
     "gestionexamen": {
       "type": "application",
       "root": "apps/gestionexamen",
@@ -55,6 +64,24 @@
         "tsConfigPath": "apps/service-organistaion/tsconfig.app.json"
       }
     },
+    "service-pedagogique": {
+      "type": "application",
+      "root": "apps/service-pedagogique",
+      "entryFile": "main",
+      "sourceRoot": "apps/service-pedagogique/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/service-pedagogique/tsconfig.app.json"
+      }
+    },
+    "service-personel": {
+      "type": "application",
+      "root": "apps/service-personel",
+      "entryFile": "main",
+      "sourceRoot": "apps/service-personel/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/service-personel/tsconfig.app.json"
+      }
+    },
     "service-resultat": {
       "type": "application",
       "root": "apps/service-resultat",
@@ -62,6 +89,15 @@
       "sourceRoot": "apps/service-resultat/src",
       "compilerOptions": {
         "tsConfigPath": "apps/service-resultat/tsconfig.app.json"
+      }
+    },
+    "service-ue": {
+      "type": "application",
+      "root": "apps/service-ue",
+      "entryFile": "main",
+      "sourceRoot": "apps/service-ue/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/service-ue/tsconfig.app.json"
       }
     }
   }
