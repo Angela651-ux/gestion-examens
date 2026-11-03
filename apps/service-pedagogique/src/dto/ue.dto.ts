@@ -25,7 +25,7 @@ export enum semestreUE{
 export class ueDTO{
     @PrimaryGeneratedColumn()
     idue: number;
-    
+
     @IsNotEmpty()
     @IsString()
     codeue: string;

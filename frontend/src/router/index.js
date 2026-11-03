@@ -60,9 +60,9 @@ const routes = [
         component: () => import('@/views/UeEc/Ue.vue')
       },
       {
-        path:'Ec',
-        name:'Ec',
-        component: () => import('@/views/UeEc/Ec.vue')
+       path: 'ec',
+       name:'ec', 
+       component: () => import('@/views/UeEc/ec.vue')
       }
      
     ]

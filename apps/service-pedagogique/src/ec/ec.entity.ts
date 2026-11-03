@@ -11,8 +11,8 @@ export class ec{
     @Column({name: 'numec' , unique : true})
     numec: string;
 
-    @Column({name : 'codeenseignant' , unique: true})
-    codeenseignant: string;
+    @Column({name : 'idenseignant' , unique: true})
+    idenseignant: number;
 
     @Column({name : 'nomec'})
     nomec: string;
@@ -22,6 +22,6 @@ export class ec{
 
     @ManyToOne(() => ue ,(ue) => ue.ec)
 
-    @JoinColumn({name : 'codeue' , referencedColumnName: 'codeue'})
+    @JoinColumn({name : 'idue' , referencedColumnName: 'idue'})
     ue: Relation<ue>;
 }

@@ -111,6 +111,17 @@ console.log('5 - Rôle en base :', utilisateur.roleutilisateur);
 
     };
   }
+
+   async trouverId(id: number){
+    return await this.utilisateurRepository.findOne({
+      where: {idutilisateur: id},
+      select:{
+        idutilisateur: true,
+        nomutilisateur: true,
+        prenomutilisateur: true
+      }
+    })
+   }
 }
  
 

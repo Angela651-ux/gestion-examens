@@ -55,6 +55,15 @@
         "tsConfigPath": "apps/service-examens/tsconfig.app.json"
       }
     },
+    "service-organisation": {
+      "type": "application",
+      "root": "apps/service-organisation",
+      "entryFile": "main",
+      "sourceRoot": "apps/service-organisation/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/service-organisation/tsconfig.app.json"
+      }
+    },
     "service-organistaion": {
       "type": "application",
       "root": "apps/service-organistaion",
@@ -80,6 +89,15 @@
       "sourceRoot": "apps/service-personel/src",
       "compilerOptions": {
         "tsConfigPath": "apps/service-personel/tsconfig.app.json"
+      }
+    },
+    "service-personnel": {
+      "type": "application",
+      "root": "apps/service-personnel",
+      "entryFile": "main",
+      "sourceRoot": "apps/service-personnel/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/service-personnel/tsconfig.app.json"
       }
     },
     "service-resultat": {

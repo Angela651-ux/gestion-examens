@@ -1,5 +1,5 @@
 import { Controller} from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
+import { MessagePattern ,Payload} from '@nestjs/microservices';
 import { ServiceAuthentifcationService } from './service-authentifcation.service';
 import { InscriptionDTO } from './dto/inscription.dto';
 import { ConnexionDTO } from './dto/connection.dto';
@@ -17,4 +17,9 @@ export class ServiceAuthentifcationController {
   async connection (data : ConnexionDTO){
     return this.serviceAuthentifcationService.connection(data);
   }
+
+  @MessagePattern({ cmd: 'trouver_utilisateur_par_id' })
+async trouverUtilisateurParId(@Payload() id: number) {
+  return await this.serviceAuthentifcationService.trouverId(id);
+}
 }

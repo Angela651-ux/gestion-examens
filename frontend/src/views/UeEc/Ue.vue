@@ -93,8 +93,12 @@
         <h2>Liste des UE</h2>
 
         <div class="search-box">
-          <input type="text" placeholder="Rechercher une UE...">
-        </div>
+  <input
+    type="text"
+    v-model="rechercheUE"
+    placeholder="Rechercher une UE..."
+  >
+</div>
 
         <div class="tableau">
           <table>
@@ -107,10 +111,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="ue in listeUE" :key="ue.idue">
-              <td>{{ ue.codeue }}</td>
-              <td>{{ ue.libeleue }}</td>
-              <td>{{ ue.semestre }}</td>
+             <tr
+  v-for="ue in rechercherUE()"
+  :key="ue.idue"
+>
+  <td>{{ ue.codeue }}</td>
+  <td>{{ ue.libeleue }}</td>
+  <td>{{ ue.semestre }}</td>
               <td><button @click="selectionnerUE(ue)">✏️</button></td>
               <td><button @click="SupprimerUE(ue)">🗑️</button></td>
               </tr>
@@ -134,13 +141,14 @@
               <input  v-model="detailleUE.libeleUe" type="text" placeholder="Nom de l'UE">
             </label>
 
-             
+             <label >Statut
       <select v-model=" detailleUE.statueUe" required>
         <option value="">Choisir un statut</option>
         <option value="Actif">Actif</option>
         <option value="Inactif">Inactif</option>
       </select>
-
+      </label>
+<label >Semestre
           <select v-model="detailleUE.semestreUe">
   <option value="">Choisir un semestre</option>
 
@@ -152,8 +160,9 @@
     {{ s }}
   </option>
 </select>
+</label>
 
-        
+        <label>Niveau
      <select v-model="detailleUE.NiveauUe">
   <option value="">Choisir un niveau</option>
 
@@ -165,7 +174,9 @@
     {{ p }}
   </option>
 </select>
-      
+</label>
+
+      <label>Parcours
       <select v-model="detailleUE.idparcours">
   <option
     v-for="p in parcours"
@@ -175,67 +186,57 @@
     {{ p.libeleparcours }}
   </option>
 </select>
+</label>
 
           <div class="boutons">
-            <button @click="modifierUe" class="btn-primary">Enregistrer</button>
-            <button class="btn-secondary">Annuler</button>
-            <button class="btn-delete">Supprimer</button>
+            <button @click="modifierUe" class="btn-primary">Modifier</button>
+            
+            <button @click="SupprimerUE(detailleUE.idue)" class="btn-delete">Supprimer</button>
           </div>
         </div>
         </div>
+<div class="listeEC">
 
-        <div class="listeEC">
-          <div class="titreEC">
-            <h2>Éléments constitutifs (EC)</h2>
-            <button class="btn-primary">+ Ajouter un EC</button>
-          </div>
+  <h2>Liste des EC de cette UE</h2>
 
-          <div class="tableau">
-            <table>
-              <thead>
-                <tr>
-                  <th>Numéro EC</th>
-                  <th>Intitulé</th>
-                  <th>Crédits</th>
-                  <th>Enseignant</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <!-- Les EC de l'UE sélectionnée seront affichés ici -->
-              </tbody>
-            </table>
-          </div>
-        </div>
+  <div class="tableau">
 
-        <!-- Formulaire d'ajout d'un EC -->
-        <div class="ajouterEC">
-          <h3>Ajouter un EC</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Numéro EC</th>
+          <th>Libellé</th>
+          <th>Crédit</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
 
-          <div class="champsEC">
-            <label>Numéro EC
-              <input type="text" placeholder="Ex : EC1.1">
-            </label>
+      <tbody>
 
-            <label>Intitulé
-              <input type="text" placeholder="Nom de l'EC">
-            </label>
+        <tr
+          v-for="ec in listeECFiltre"
+          :key="ec.idec"
+        >
+          <td>{{ ec.numec }}</td>
+          <td>{{ ec.nomec }}</td>
+          <td>{{ ec.credit }}</td>
+          <td><button @click="consulterEC(ec)"> 🔍️Consulter</button></td>
 
-            <label>Crédits
-              <input type="number" placeholder="Ex : 2">
-            </label>
+        </tr>
 
-            <label>Enseignant
-              <input type="text" placeholder="Nom de l'enseignant">
-            </label>
-          </div>
+        <tr v-if="listeECFiltre.length === 0">
+          <td colspan="3">
+            Aucun EC associé à cette UE.
+          </td>
+        </tr>
 
-          <div class="boutons">
-            <button class="btn-primary">Enregistrer</button>
-            <button class="btn-secondary">Annuler</button>
-          </div>
-        </div>
+      </tbody>
+    </table>
 
+  </div>
+
+</div>
+        
       </section>
     </div>
   </div>
@@ -244,7 +245,9 @@
 <script setup>
 import {computed, onMounted, ref,watch} from 'vue'
 import axios from 'axios';
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 
 const formulaireVisible = ref(false)
 
@@ -268,9 +271,14 @@ formulaireVisible.value = true
  const parcours = ref([])
 
  const listeUE = ref([])
+ const rechercheUE = ref('')
  const UEselectionner = ref(null)
+ const listeEC = ref([])
+
+const listeECFiltre = ref([])
 
  const detailleUE= ref({
+  idue: null,
   codeUe :'',
   libeleUe: '',
   statueUe: '',
@@ -278,6 +286,8 @@ formulaireVisible.value = true
   NiveauUe: '',
   idparcours: '',
  })
+
+
 
 
  const semestresParNiveau = {
@@ -322,7 +332,7 @@ parcours.value = reponseParcours.data
 console.log('Parcours chargés :', parcours.value)
 
 await ChargeUe();
-
+await ChargerEC()
 
   }catch(erreur){
 console.error('Erreur de chargement:', erreur)
@@ -404,11 +414,16 @@ await ChargeUe()
 }
 
   function selectionnerUE(ue) {
-     console.log('UE reçue :', JSON.stringify(ue, null, 2))
+
+  console.log('UE reçue :', JSON.stringify(ue, null, 2))
 
   UEselectionner.value = ue
 
+  // Charger les EC correspondant à cette UE
+  filtrerECdeUE(ue.idue)
+
   detailleUE.value = {
+    idue: ue.idue,
     codeUe: ue.codeue ?? '',
     libeleUe: ue.libeleue ?? '',
     statueUe: ue.statueue ?? '',
@@ -423,6 +438,7 @@ await ChargeUe()
   'http://localhost:3000/svrpedag-ue/listeUE'
 )
  listeUE.value = reponseListeUe.data
+ 
 
 
  if(listeUE.value.length > 0){
@@ -431,6 +447,9 @@ await ChargeUe()
     (a ,b) => b.idue - a.idue
   )[0]
 selectionnerUE(dernieUE) 
+} else if(listeUE.value.length === 0){
+  alert ('Aucun Ue a été enregistrée')
+  detailleUE.value= ''
 }
 
 
@@ -479,7 +498,9 @@ const modifierUe = async () => {
     alert('Erreur de modification !')
   }
 }
-const SupprimerUE = async (ue) =>{
+const SupprimerUE = async () =>{
+  const ue= UEselectionner.value
+
   const confirmation = confirm(  `Voulez-vous vraiment supprimer l'UE ${ue.codeue} ?`)
 
   if(!confirmation){
@@ -499,6 +520,70 @@ await chargerProchainCode()
   }catch(erreur){
     console.error('Erreur de suppression', erreur)
   }
+}
+function rechercherUE() {
+
+  if (rechercheUE.value.trim() === '') {
+    return listeUE.value;
+  }
+
+  return listeUE.value.filter(ue => {
+
+    if (
+      ue.codeue?.toLowerCase().includes(rechercheUE.value.toLowerCase()) ||
+      ue.libeleue?.toLowerCase().includes(rechercheUE.value.toLowerCase())
+    ) {
+      return true;
+    }
+
+    return false;
+
+  });
+
+
+}
+
+function filtrerECdeUE(idueSelectionne) {
+
+  listeECFiltre.value = []
+
+  listeEC.value.forEach(ec => {
+
+    if (Number(ec.ue?.idue) === Number(idueSelectionne)) {
+
+      listeECFiltre.value.push(ec)
+
+    }
+
+  })
+
+}
+
+async function ChargerEC() {
+  try {
+    const reponseListeEC = await axios.get(
+      'http://localhost:3000/svrpedag-ec/ListeEC'
+    )
+
+    listeEC.value = reponseListeEC.data
+
+    // Filtrer selon l'UE déjà sélectionnée
+    if (UEselectionner.value) {
+      filtrerECdeUE(UEselectionner.value.idue)
+    }
+
+  } catch (erreur) {
+    console.error('Erreur de chargement des EC :', erreur)
+  }
+}
+
+function consulterEC(ec) {
+  router.push({
+    path: '/dashboard/ec',
+    query: {
+      idec: ec.idec
+    }
+  })
 }
 
 </script>

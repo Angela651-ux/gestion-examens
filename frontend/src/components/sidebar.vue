@@ -41,7 +41,7 @@
 
         <RouterLink to="/dashboard/Ue">Unité d'Enseignements (UE)</RouterLink>
 
-        <RouterLink to="/dashboard/Ec">Eléments constitutifs (EC)</RouterLink>
+        <RouterLink to="/dashboard/ec">Eléments constitutifs (EC)</RouterLink>
       </div>
 
     
