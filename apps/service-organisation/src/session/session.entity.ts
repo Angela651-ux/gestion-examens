@@ -1,28 +1,44 @@
-import { Entity , PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    OneToMany
+} from 'typeorm';
+
 import type { Relation } from 'typeorm';
 import { Evaluation } from '../evaluation/evaluation.entity';
 import { Seance } from '../seance/seance.entity';
 
 @Entity('session')
-export class session{
-    @PrimaryGeneratedColumn({name : 'idsession'})
+export class session {
+
+    @PrimaryGeneratedColumn({ name: 'idsession' })
     idsession: number;
 
-    @Column({name: 'numsession' , unique: true})
+    @Column({ name: 'numsession', unique: true })
     numsession: string;
 
-    @Column({name: 'libelesession'})
+    @Column({ name: 'libelesession' })
     libelesession: string;
 
-    @Column({name: 'datedebutsession', type: 'date'})
-    datedebutsession : Date;
+    @Column({ name: 'typesession' })
+    typesession: string;
 
-    @Column({name : 'datefinsession', type: Date})
+    @Column({ name: 'datedebutsession', type: 'date' })
+    datedebutsession: Date;
+
+    @Column({ name: 'datefinsession', type: 'date' })
     datefinsession: Date;
 
-    @OneToMany(() => Evaluation,(Evaluation)=>Evaluation.session)
-    Evaluation: Relation<Evaluation>[]
+    @Column({ name: 'statutsession' })
+    statutsession: string;
 
-    @OneToMany(() => Seance, (Seance)=>Seance.session)
-    Seance : Relation<Seance>[]
+    @Column({ name: 'annersession' })
+    annersession: string;
+
+    @OneToMany(() => Evaluation, evaluation => evaluation.session)
+    Evaluation: Relation<Evaluation[]>;
+
+    @OneToMany(() => Seance, seance => seance.session)
+    Seance: Relation<Seance[]>;
 }

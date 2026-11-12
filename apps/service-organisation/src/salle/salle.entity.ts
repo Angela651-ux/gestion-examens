@@ -16,6 +16,6 @@ export class Salle{
     localisation: string;
 
     @OneToMany(() => Tables,(Tables)=>Tables.Salle)
-    Tables: Relation<Tables>[]
+    Tables: Relation<Tables[]>
     
 }

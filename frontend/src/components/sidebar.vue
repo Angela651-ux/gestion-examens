@@ -44,22 +44,41 @@
         <RouterLink to="/dashboard/ec">Eléments constitutifs (EC)</RouterLink>
       </div>
 
-    
+      <button class="menu-principal" @click="afficherSession">
+        <span>Session</span>
+        <span>{{ SessionOuvert ? '⌃' : '⌄'  }}</span>
+      </button>
+    <div  v-if="SessionOuvert" class="sous-menu">
+      <RouterLink to="/dashboard/creeSession"> Crée Session</RouterLink>
+      <RouterLink to ="/dashboard/sessionNormale"> Session Normale</RouterLink>
+      <RouterLink to="/dashboard/sessionRattrapage">Session de Rattrapage</RouterLink>
+      
+    </div>
 
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const calendrierOuvert = ref(false)
 const UeEcOuvert = ref(false)
+const SessionOuvert= ref(false)
+
+const router = useRouter()
 
 function afficherCalendrier() {
   calendrierOuvert.value = !calendrierOuvert.value
 }
 function afficherUe(){
   UeEcOuvert.value = !UeEcOuvert.value
+}
+
+function afficherSession(){
+SessionOuvert.value= !SessionOuvert.value
+
+  router.push('/dashboard/session')
 }
 </script>
 

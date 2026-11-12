@@ -9,6 +9,7 @@ import { SvrpedagUeController } from './svrpedag-ue/svrpedag-ue.controller';
 import { SvrpedagParcoursController } from './svrpedag-parcours/svrpedag-parcours.controller';
 import { SvrpersEnseignantController } from './svrpers-enseignant/svrpers-enseignant.controller';
 import { SvrpedagEcController } from './svrpedag-ec/svrpedag-ec.controller';
+import { SvrorgController } from './svrorg/svrorg.controller';
 
 
 @Module({
@@ -37,7 +38,16 @@ import { SvrpedagEcController } from './svrpedag-ec/svrpedag-ec.controller';
           host:'localhost',
           port:3003,
         }
+      },
+      {
+        name:'ORG_SERVICE',
+        transport: Transport.TCP,
+        options:{
+          host:'localhost',
+          port:3004,
+        }
       }
+
       
     
     ]),
@@ -50,6 +60,7 @@ import { SvrpedagEcController } from './svrpedag-ec/svrpedag-ec.controller';
     SvrpedagParcoursController,
     SvrpersEnseignantController,
     SvrpedagEcController,
+    SvrorgController,
   
   ],
 

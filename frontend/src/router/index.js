@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/home.vue'
 import LoginEtudiant from '../views/loginEtudiant.vue'
 import LoginPersonnel from '@/views/loginPersonnel.vue'
-import path from 'path'
 import InscriptionPersonnel from '@/views/inscriptionPersonnel.vue'
 import Inscriptionetudiant from '@/views/Inscriptionetudiant.vue'
 
@@ -63,7 +62,34 @@ const routes = [
        path: 'ec',
        name:'ec', 
        component: () => import('@/views/UeEc/ec.vue')
+      },
+      {
+        path: 'session',
+        name: 'session',
+        component: () => import('@/views/session/session.vue')
+      },
+      {
+        path:'creeSession',
+        name:'creeSession',
+        component: () => import('@/views/session/AjoutSession.vue')
+      },
+      {
+        path:'modifierSession/:id',
+        name: 'modifierSession',
+        component: () => import('@/views/session/AjoutSession.vue')
+
+      },
+      {
+        path:'sessionNormale',
+        name: 'sessionNormale',
+        component: () => import('@/views/session/sessionNormale.vue')
+      },
+      {
+        path: 'sessionRattrapage',
+        name: 'sessionRattrapage',
+        component: () => import('@/views/session/sessionRattrapage.vue')
       }
+     
      
     ]
   }
