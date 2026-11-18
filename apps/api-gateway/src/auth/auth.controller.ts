@@ -1,4 +1,4 @@
-import { Controller, Body, Inject, Post } from '@nestjs/common';
+import { Controller, Body, Inject, Post ,Get} from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
 
@@ -28,6 +28,14 @@ export class AuthController {
                 {cmd : 'connection'},
                 data,
             ),
+        );
+    }
+
+    @Get('prochainNum')
+    numUtilisateur(){
+        return this.authClient.send(
+            {cmd : 'Charger_Num_Utilisateur'},
+            {}
         );
     }
 }

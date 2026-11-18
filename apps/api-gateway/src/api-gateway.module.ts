@@ -10,6 +10,7 @@ import { SvrpedagParcoursController } from './svrpedag-parcours/svrpedag-parcour
 import { SvrpersEnseignantController } from './svrpers-enseignant/svrpers-enseignant.controller';
 import { SvrpedagEcController } from './svrpedag-ec/svrpedag-ec.controller';
 import { SvrorgController } from './svrorg/svrorg.controller';
+import { SvrpedagController } from './svrpedag/svrpedag.controller';
 
 
 @Module({
@@ -61,6 +62,7 @@ import { SvrorgController } from './svrorg/svrorg.controller';
     SvrpersEnseignantController,
     SvrpedagEcController,
     SvrorgController,
+    SvrpedagController,
   
   ],
 

@@ -7,6 +7,7 @@ import InscriptionPersonnel from '@/views/inscriptionPersonnel.vue'
 import Inscriptionetudiant from '@/views/Inscriptionetudiant.vue'
 
 import dashboardLayout from '@/layout/dashboardLayout.vue'
+import path from 'path'
 
 
 const routes = [
@@ -88,6 +89,17 @@ const routes = [
         path: 'sessionRattrapage',
         name: 'sessionRattrapage',
         component: () => import('@/views/session/sessionRattrapage.vue')
+      },
+      {
+        path: 'evaluation',
+        name: 'evaluation',
+        component: () => import('@/views/evaluation/evaluation.vue')
+
+      },
+      {
+        path:'creerEvaluation',
+        name: 'creeEvaluation',
+        component: () => import('@/views/evaluation/creeEvaluation.vue')
       }
      
      

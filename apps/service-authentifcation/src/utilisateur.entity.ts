@@ -5,26 +5,30 @@ export class Utilisateur {
     @PrimaryGeneratedColumn()
     idutilisateur : number;
 
-    @Column({ unique : true })
-    mailutilisateur : string ;
+    @Column({ name :'numutilisateur' ,unique: true})
+    numutilisateur: string;
+
+    @Column({name:'emailpersonnel', unique : true })
+    emailpersonnel : string ;
 
     @Column()
-    roleutilisateur : string ;
+    rolepersonnel : string ;
 
-    @Column()
-    motdepass : string ;
 
-    @Column()
-    nomutilisateur: string;
+    @Column({name:'nom'})
+    nom: string;
 
-    @Column()
-    prenomutilisateur: string;
+    @Column({name:'prenom'})
+    prenom: string;
 
-    @Column()
-    telutilisateur: string;
+    @Column({name: 'datenaiss'})
+    datenaiss: string;
 
-    @Column()
-    datenaissutilisateur: string;
+    @Column({name: 'idetablissement', type: 'integer'})
+    idetablissement: number;
+
+     @Column({name:'motdepass', type: 'varchar', length: 255, select: false })
+  motdepass: string;
 
 
 }

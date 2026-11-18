@@ -8,6 +8,7 @@ import {
 
 import type { Relation } from 'typeorm';
 import { session } from '../session/session.entity';
+import { Evaluation } from '../evaluation/evaluation.entity';
 
 @Entity('seance')
 export class Seance {
@@ -27,4 +28,8 @@ export class Seance {
     @ManyToOne(() => session, session => session.Seance)
     @JoinColumn({ name: 'idsession', referencedColumnName: 'idsession' })
     session: Relation<session>;
+
+    @ManyToOne(() => Evaluation, Evaluation => Evaluation.Seance)
+    @JoinColumn({name: 'idevaluation' , referencedColumnName: 'idevaluation'})
+    Evaluation: Relation<Evaluation>
 }

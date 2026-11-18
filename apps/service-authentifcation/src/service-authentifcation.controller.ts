@@ -22,4 +22,9 @@ export class ServiceAuthentifcationController {
 async trouverUtilisateurParId(@Payload() id: number) {
   return await this.serviceAuthentifcationService.trouverId(id);
 }
+
+@MessagePattern({cmd: 'Charger_Num_Utilisateur'})
+numUtilisateur(){
+  return this.serviceAuthentifcationService.numUtilisateur();
+}
 }

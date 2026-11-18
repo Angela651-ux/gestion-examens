@@ -1,10 +1,14 @@
 import { IsEmail, IsNotEmpty, IsEnum, MinLength } from "class-validator";
 
 export enum RolePersonnel{
-    ADMINISTRATEUR = 'admin',
-    ENSEIGNANT = 'enseignant',
-    SECRETAIRE = 'secretaire',
-    CHEFMENTION = 'ChefMention'
+   ADMINISTRATEUR = 'Admin',
+    Responsable_examens= 'RS',
+    Agent_scolariter= 'AS',
+    Responsable_Mention= 'RM',
+    ENSEIGNANT = 'E',
+    SURVEILLANT= 'Surveillant',
+    President_jury= 'PJ'
+   
 }
 
 export class ConnexionDTO {

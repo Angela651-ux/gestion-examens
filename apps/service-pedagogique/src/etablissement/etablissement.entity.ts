@@ -9,11 +9,11 @@ export class etablissement{
     @Column({name: 'codeetabliss' , unique :true})
     codeetabliss: string;
 
-    @Column({name: 'libeleetablissement'})
-    libeleetablissement: string;
+    @Column({name: 'nometablissement'})
+    nometablissement: string;
 
-    @Column({name: 'adressetablissement'})
-    adressetablissement: string;
+    @Column({name: 'adretablissement'})
+    adretablissement: string;
 
     @Column({name :'emailetablissement', unique: true})
     emailetablissement: string;

@@ -1,13 +1,26 @@
-import {IsEmail , IsNotEmpty , IsOptional, IsString, IsEnum, IsDateString , MinLength} from 'class-validator'
+import {IsEmail , IsNotEmpty , IsOptional, IsString, IsEnum, IsDateString , MinLength, IsInt, Min} from 'class-validator'
+import { PrimaryGeneratedColumn } from 'typeorm';
+import { Type } from 'class-transformer';
 
 export enum RolePersonnel{
-    ADMINISTRATEUR = 'admin',
-    ENSEIGNANT = 'enseignant',
-    SECRETAIRE = 'secretaire',
-    CHEFMENTION = 'ChefMention',
+    ADMINISTRATEUR = 'Admin',
+    Responsable_examens= 'RS',
+    Agent_scolariter= 'AS',
+    Responsable_Mention= 'RM',
+    ENSEIGNANT = 'E',
+    SURVEILLANT= 'Surveillant',
+    President_jury= 'PJ'
+   
 }
 
 export class InscriptionDTO{
+@PrimaryGeneratedColumn()
+idutilisateur: number;
+
+@IsNotEmpty()
+@IsString()
+numutilisateur:string;
+
 @IsNotEmpty()
 @IsString()
 nom: string;
@@ -17,14 +30,11 @@ nom: string;
 prenom?: string;
 
 @IsEmail()
-email: string;
+emailpersonnel: string;
 
 @IsDateString()
 datenaiss: string;
 
-@IsNotEmpty()
-@IsString()
-tel: string;
 
 @MinLength(8)
 password: string;
@@ -33,7 +43,12 @@ password: string;
 confirmpassword: string;
 
 @IsEnum(RolePersonnel)
-role: RolePersonnel;
+rolepersonnel: RolePersonnel;
+
+@Type(() => Number)
+@IsInt()
+@Min(1)
+idetablissement: number;
 
 
 }

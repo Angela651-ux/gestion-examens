@@ -51,8 +51,15 @@
     <div  v-if="SessionOuvert" class="sous-menu">
       <RouterLink to="/dashboard/creeSession"> Crée Session</RouterLink>
       <RouterLink to ="/dashboard/sessionNormale"> Session Normale</RouterLink>
-      <RouterLink to="/dashboard/sessionRattrapage">Session de Rattrapage</RouterLink>
-      
+      <RouterLink to="/dashboard/sessionRattrapage">Session de Rattrapage</RouterLink> 
+    </div>
+
+    <button class="menu-principal" @click="afficherEvaluation">
+        <span>Evaluations</span>
+        <span>{{ EvaluationOuvert ? '⌃' : '⌄'  }}</span>
+      </button>
+    <div v-if="EvaluationOuvert" class="sous-menu">
+<RouterLink to="/dashboard/creerEvaluation">Ajouter une évaluation</RouterLink>
     </div>
 
   </div>
@@ -65,6 +72,7 @@ import { useRouter } from 'vue-router'
 const calendrierOuvert = ref(false)
 const UeEcOuvert = ref(false)
 const SessionOuvert= ref(false)
+const EvaluationOuvert= ref(false)
 
 const router = useRouter()
 
@@ -79,6 +87,12 @@ function afficherSession(){
 SessionOuvert.value= !SessionOuvert.value
 
   router.push('/dashboard/session')
+}
+
+function afficherEvaluation(){
+  EvaluationOuvert.value= !EvaluationOuvert.value
+
+  router.push('/dashboard/evaluation')
 }
 </script>
 

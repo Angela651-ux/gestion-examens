@@ -7,6 +7,7 @@ import { EvaluationModule } from './evaluation/evaluation.module';
 import { SeanceModule } from './seance/seance.module';
 import { SalleModule } from './salle/salle.module';
 import { TableModule } from './table/table.module';
+import { ConcernerModule } from './concerner/concerner.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ SessionModule,
 EvaluationModule,
 SeanceModule,
 SalleModule,
-TableModule
+TableModule,
+ConcernerModule
   ],
   controllers: [ServiceOrganisationController],
   providers: [ServiceOrganisationService],

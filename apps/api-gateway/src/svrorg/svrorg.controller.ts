@@ -56,4 +56,22 @@ export class SvrorgController {
         {idsession: id},
     );
    }
+
+   @Get('codeEval')
+   codeEvaluation(){
+    return this.orgClient.send(
+        {cmd : 'code_ev'},
+        {}
+    )
+   }
+
+   @Post('enregistrerEv')
+   async enregistrerEv(@Body() data:any){
+    return  firstValueFrom(
+        this.orgClient.send(
+        {cmd:'enregistrer_Ev'},
+        data,
+    )
+)
+   }
 }
